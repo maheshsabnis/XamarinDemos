@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.MainPage">
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" >
+            <Label Text="First Name"
+                    x:Name="lblfirstName"></Label>
+            <Entry Placeholder="Enter First Name"
+                    x:Name="firstName"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Middle Name"></Label>
+            <Entry Placeholder="Enter Middle Name"
+                    x:Name="middleName"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Last Name"></Label>
+            <Entry Placeholder="Enter Last Name"
+                    x:Name="lastName"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Select Profession"></Label>
+            <!--Picker is like Drop-Down-->
+            <Picker x:Name="lstprofession"
+                     >
+                <!--<Picker.Items>
+                    <x:String>Doctor</x:String>
+                    <x:String>Engineer</x:String>
+                    <x:String>Teacher</x:String>
+                    <x:String>Architect</x:String>
+                </Picker.Items>-->
+
+            </Picker>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Clear"
+                     Clicked="btnClear_Clicked"
+                     x:Name="btnClear"></Button>
+            <Button Text="Save"
+                    Clicked="btnSave_Clicked"
+                     x:Name="btnSave"></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label x:Name="lblInfo"></Label>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

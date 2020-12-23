@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.SliderDemo">
+    <ContentPage.Content>
+        <StackLayout x:Name="stkPanel">
+            <!--<Label x:Name="lblShow" Text="Value = " TextColor="Yellow" BackgroundColor="Red"></Label>
+            <Slider x:Name="slideValue" Minimum="0" Maximum="300"/>-->
+
+
+
+            <StackLayout Margin="2,400, 2,2">
+
+                <Slider x:Name="sliderDesign" Maximum="360" Minimum="0"
+                         ValueChanged="sliderDesign_ValueChanged"></Slider>
+                <Label Text="The Demo of Slider using Code"
+                       FontSize="Large" x:Name="lblDesign"
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand"
+                       TextColor="Magenta"
+                       BackgroundColor="Yellow"></Label>
+                
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.PickerPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Picker DEMO" x:Name="lblDisplay" FontSize="50"></Label>
+            <Label Text="Please Select Color"></Label>
+            <Picker x:Name="colorPicker"
+                      SelectedIndexChanged="colorPicker_SelectedIndexChanged"></Picker>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
