@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.ListViewPage"
+             xmlns:cls="clr-namespace:XamTrg.Models">
+    <!--xmlns:cls="clr-namespace:XamTrg.Models" using the Models namespace in the XAML-->
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label FontSize="50" FontFamily="Times New Roman" Text="ListView"></Label>
+            <ListView x:Name="listViewProducts">
+                <ListView.ItemsSource>
+                    <!--Displaying the String Data-->
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Mahesh</x:String>
+                        <x:String>Tejas</x:String>
+                        <x:String>Ramesh</x:String>
+                        <x:String>Ram</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

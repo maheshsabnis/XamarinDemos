@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.DatabindingDemos.ElementToElementBinding">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Picke has selected Item-->
+            <Label Text="Element To Element Binding"
+                    FontSize="{Binding Source={x:Reference sliderFontSize}, Path=Value}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand" 
+                    TextColor="{Binding Source={x:Reference colorPicker}, Path=SelectedItem}"
+                    BackgroundColor="Yellow"
+                    Rotation="{Binding Source={x:Reference sliderSource}, Path=Value}"></Label>
+
+            <!--The Slider's ValueChanged Event is emitteing the 'Value'
+              this value will be used by the Lable element-->
+            
+            <Slider x:Name="sliderSource"
+                     Maximum="360"
+                     VerticalOptions="CenterAndExpand"></Slider>
+
+            <Slider x:Name="sliderFontSize"
+                     Maximum="100" Minimum="4" Value="10"
+                     VerticalOptions="CenterAndExpand"></Slider>
+            <Picker x:Name="colorPicker">
+                <Picker.Items>
+                    <x:String>Red</x:String>
+                    <x:String>Magenta</x:String>
+                    <x:String>Green</x:String>
+                    <x:String>Black</x:String>
+                </Picker.Items>
+            </Picker>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

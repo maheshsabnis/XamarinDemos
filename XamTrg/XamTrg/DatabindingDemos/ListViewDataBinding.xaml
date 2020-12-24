@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.DatabindingDemos.ListViewDataBinding"
+             xmlns:cls="clr-namespace:XamTrg.Models"
+             
+             >
+    <!--Registring the Namespace  
+      xmlns:cls="clr-namespace:XamTrg.Models"
+    -->
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="ListView Databinding" FontSize="40"/>
+            <!--The BindingContext will load an instance of Products object and
+              ItemsSource will read all its records-->
+            <ListView   ItemsSource="{Binding}" x:Name="listViewProducts">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding ProductId}"></Label>
+                                <Label Text="{Binding ProductName}"></Label>
+                                <Label Text="{Binding Manufacturer}"></Label>
+                                <Label Text="{Binding BasePrice}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

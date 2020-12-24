@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.DatabindingDemos.ComplaintPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Ragister your complaints" FontSize="30"></Label>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Complaint Type"></Label>
+                <Picker x:Name="pickerComplaintType" WidthRequest="300"
+                         SelectedItem="{Binding Complaints.ComplaintType}"
+                          ItemsSource="{Binding ComplaintTypes}"></Picker>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Complaint Type"></Label>
+                <Entry x:Name="entryComplaintDedtails"
+                        WidthRequest="300"
+                        Text="{Binding Complaints.ComplaintDetails}"></Entry> 
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnRegisterComplaint" Text="Register Complaint"
+                         Clicked="btnRegisterComplaint_Clicked"></Button>
+                <Button x:Name="btnClear" Text="Clear"
+                         Clicked="btnClear_Clicked"></Button>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+
+                <Label Text="Your Complaints"></Label>
+                <ListView ItemsSource="{Binding ComplaintsList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding ComplaintType}"></Label>
+                                    <Label Text="{Binding ComplaintDetails}"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>    
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

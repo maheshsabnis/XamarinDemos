@@ -10,7 +10,7 @@ namespace XamTrg
         {
             InitializeComponent();
 
-            MainPage = new PickerPage();
+            MainPage = new DatabindingDemos.ComplaintPage();
         }
 
         /// <summary>

@@ -41,7 +41,7 @@ namespace XamTrg
                 BackgroundColor = Color.FromRgb(50, 80, 255)
             };
 
-
+            
 
             Slider slider = new Slider()
             {

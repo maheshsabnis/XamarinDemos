@@ -7,7 +7,10 @@
             <Label Text="Picker DEMO" x:Name="lblDisplay" FontSize="50"></Label>
             <Label Text="Please Select Color"></Label>
             <Picker x:Name="colorPicker"
-                      SelectedIndexChanged="colorPicker_SelectedIndexChanged"></Picker>
+                      SelectedIndexChanged="colorPicker_SelectedIndexChanged">
+            </Picker>
+
+            <Picker x:Name="pickerActor" SelectedIndexChanged="pickerActor_SelectedIndexChanged"> </Picker>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
