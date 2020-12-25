@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Text;
 
 namespace XamTrg.Models
@@ -108,6 +109,130 @@ namespace XamTrg.Models
                 // the current object will raise the event and 
                 // pass the property name that is updated / changed
                 PropertyChanged(this, new PropertyChangedEventArgs(pName));
+        }
+    }
+
+    public class ColorGenerator : INotifyPropertyChanged
+    {
+
+
+        private int red;
+
+        public int Red
+        {
+            get { return red; }
+            set {
+                red = value;
+                OnPropertyChanged("Red");
+            }
+        }
+
+        private int green;
+        public int Green
+        {
+            get { return green; }
+            set
+            {
+                green = value;
+                OnPropertyChanged("Green");
+            }
+        }
+        private int blue;
+        public int Blue
+        {
+            get { return blue; }
+            set
+            {
+                blue = value;
+                OnPropertyChanged("Blue");
+            }
+        }
+
+
+        private Color color;
+
+        public Color Color
+        {
+            get
+            {
+                return color;
+            }
+            set
+            {
+                // logic for generating color based on Red, Green, Blue 
+                color = Color.FromArgb(Red, Green, Blue);
+                OnPropertyChanged("Color");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string pName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(pName));
+            }
+        }
+    }
+
+
+    public class Employee : INotifyPropertyChanged
+    {
+
+        int _EmpNo;
+        public int EmpNo
+        {
+            get { return _EmpNo; }
+            set
+            {
+                _EmpNo = value;
+                OnPropertyChanged("EmpNo");
+            }
+        }
+        string _EmpName;
+        public string EmpName
+        {
+            get { return _EmpName; }
+            set
+            {
+                _EmpName = value;
+                OnPropertyChanged("EmpName");
+            }
+        }
+        int _Salary;
+        public int Salary
+        {
+            get { return _Salary; }
+            set
+            {
+                _Salary = value;
+                OnPropertyChanged("Salary");
+            }
+        }
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string pName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(pName));
+            }
+        }
+    }
+
+
+
+    public class Employees : ObservableCollection<Employee>
+    {
+        public Employees()
+        {
+            Add(new Employee() {EmpNo=101,EmpName="Mahesh",Salary=1000 });
+            Add(new Employee() { EmpNo = 102, EmpName = "Ramesh", Salary = 2000 });
+            Add(new Employee() { EmpNo = 103, EmpName = "Tejas", Salary = 1200 });
         }
     }
 

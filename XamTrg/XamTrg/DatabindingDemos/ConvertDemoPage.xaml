@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.DatabindingDemos.ConvertDemoPage"
+              xmlns:ns="clr-namespace:XamTrg.DatabindingDemos">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ns:EnableDisableBooleanConverter x:Key="enabledisable"></ns:EnableDisableBooleanConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Demo Value Converter" FontSize="50" />
+            <Label Text="Button will be enabled when Entry has some value" FontSize="20"></Label>    
+            <Entry x:Name="txtData" Text=""
+                    Placeholder="Enter Name here" WidthRequest="200"
+                    TextChanged="txtData_TextChanged"
+                    VerticalOptions="CenterAndExpand"></Entry>
+
+            <Button Text="Accept (Enable-Disable-Using-Code)" x:Name="btn"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="Center"
+                     IsEnabled="false"
+                     TextColor="Red" BackgroundColor="Yellow"/>
+
+
+            <Entry Text="" x:Name="entryNew"
+                    Placeholder="Enter Name here" WidthRequest="200"
+                    VerticalOptions="CenterAndExpand"></Entry>
+
+            <Button Text="Accept (Enable-Disable-Using-Converter)" 
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="Center"
+                     IsEnabled="{Binding Source={x:Reference entryNew}, Path=Text.Length, 
+                    Converter={StaticResource enabledisable}}"
+                     TextColor="Red" BackgroundColor="Yellow"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

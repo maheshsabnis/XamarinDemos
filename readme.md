@@ -250,6 +250,14 @@ Properties of Binding Class
     - The Source object from which the value is read
 4. Converter
     - COnverts the value for Binding
+    - The property is of the type IValueConverter interface with following two methods
+        - Convert(), accept following paramatere
+            - object --> Value to convert
+            - Type --> The terget type for the vconvertion
+            - CultureInfo --> The type of culture to convert    
+       - ConvertBack
+            - Convert to original value
+
 5. FallbackValue
     - If source failes to pass the data to target then instead of showing blank value create fallback value 
         e.g. Not Available for string datatype and 0 for numeric
@@ -303,6 +311,140 @@ Syntax
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+
+
+
+# The Model Class
+
+    public class Employee : INotifyPropertyChanged
+    {
+
+        int _EmpNo;
+        public int EmpNo
+        {
+            get { return _EmpNo; }
+            set
+            {
+                _EmpNo = value;
+                OnPropertyChanged("EmpNo");
+            }
+        }
+        string _EmpName;
+        public string EmpName
+        {
+            get { return _EmpName; }
+            set
+            {
+                _EmpName = value;
+                OnPropertyChanged("EmpName");
+            }
+        }
+        int _Salary;
+        public int Salary
+        {
+            get { return _Salary; }
+            set
+            {
+                _Salary = value;
+                OnPropertyChanged("Salary");
+            }
+        }
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string pName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(pName));
+            }
+        }
+    }
+
+
+
+    public class Employees : ObservableCollection<Employee>
+    {
+        public Employees()
+        {
+            Add(new Employee() {EmpNo=101,EmpName="Mahesh",Salary=1000 });
+            Add(new Employee() { EmpNo = 102, EmpName = "Ramesh", Salary = 2000 });
+            Add(new Employee() { EmpNo = 103, EmpName = "Tejas", Salary = 1200 });
+
+
+
+        }
+    }
+
+#COde Less Xaml for declaring an instance of CLR nobject in XAML
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.DatabindingDemos.CodeLessListView"
+             xmlns:src="clr-namespace:XamTrg.Models">
+
+    <!-- xmlns:src="clr-namespace:XamTrg.Models": Registering the Namespace-->
+
+    
+    <!--Resources is the Resource Dicatoinary of
+      Page, Layout Elements to define the instances for
+      CLR objects or Styles-->
+    <ContentPage.Resources>
+        <!--x:Key is the instance of the Employees class-->
+        <src:Employees x:Key="empds"></src:Employees>
+    </ContentPage.Resources
+    >
+    
+    <ContentPage.Content>
+        <StackLayout>
+             
+            <Label Text="CodeLess ListView" FontSize="40" FontFamily="Times New Roman"></Label>
+            <!--BindingContext="{Binding Source={x:StaticResource empds} }" means that set the Context for the databoinding 
+            to an instance of Employees class
+              ItemsSource="{Binding}"  empty binding means that use the binding source 
+            of 'BindingContext' of element itself
+             or use 'BindingContext' of its parent
+          
+            -->
+            <ListView BindingContext="{Binding Source={x:StaticResource empds} }" 
+                      ItemsSource="{Binding}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=EmpNo}"></Label>
+                                <Label Text="{Binding Path=EmpName}"></Label>
+                                <Label Text="{Binding Path=Salary}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+
+# Converter Implementation
+ public class EnableDisableBooleanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            // if the length of data in Entry is not 0 then return true else false
+            if ((int)value != 0) return true;
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? 1 : 0;
+        }
+    }
+
+
+
 
 # Permission to access REST Calls
  <uses-permission android:name="android.permission.INTERNET" /> 

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.DatabindingDemos.EmployeeView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Employee View" FontSize="50"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="EmpNo"></Label>
+                <Entry x:Name="txteno" WidthRequest="300" 
+                       Text="{Binding Path=Employee.EmpNo}"></Entry>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="EmpName"></Label>
+                <Entry x:Name="txtename" WidthRequest="400"
+                        Text="{Binding Path=Employee.EmpName}"></Entry>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Salary"></Label>
+                <Entry x:Name="txtsal" WidthRequest="300"
+                        Text="{Binding Path=Employee.Salary}"></Entry>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnClear" Text="Clear" Clicked="btnClear_Clicked"></Button>
+                <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked"></Button>
+            </StackLayout>
+
+            <!--ItemTemplate is a Visual Tree for Collection Element to generate
+              repeated UI tree based on ItemsSource
+              DataTemplate is the  object used to Generate the UI using the 
+             XAML Elements. Currently this uses 'ViewCell'.
+            ViewCell is the Child element of Collection Views that descides what UI is shown 
+            based on ItemTemplate Data Source (in this case its iks Employee Object)
+            -->
+
+            <ListView x:Name="listViewEmployee">
+                <ListView.ItemTemplate> 
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=EmpNo}"></Label>
+                                <Label Text="{Binding Path=EmpName}"></Label>
+                                <Label Text="{Binding Path=Salary}"></Label>
+                            </StackLayout>
+                        </ViewCell>    
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>    
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

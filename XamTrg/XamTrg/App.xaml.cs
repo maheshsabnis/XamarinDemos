@@ -10,7 +10,7 @@ namespace XamTrg
         {
             InitializeComponent();
 
-            MainPage = new restcalls.RESTPage();
+            MainPage = new DatabindingDemos.ConvertDemoPage();
         }
 
         /// <summary>

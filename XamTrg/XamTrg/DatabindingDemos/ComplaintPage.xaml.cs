@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using XamTrg.Models;
 namespace XamTrg.DatabindingDemos
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ComplaintPage : ContentPage
+    public partial class ComplaintPage : ContentPage, INotifyPropertyChanged
     {
 
         ComplaintsTypeList objCmplaints;
@@ -33,7 +34,7 @@ namespace XamTrg.DatabindingDemos
             ComplaintsList = new ObservableCollection<Complaints>();
 
             // bind all public properties of the current class
-            // to the Pages
+            // to the Page Elements
             BindingContext = this;
         }
 
