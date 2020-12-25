@@ -10,7 +10,7 @@ namespace XamTrg
         {
             InitializeComponent();
 
-            MainPage = new DatabindingDemos.ConvertDemoPage();
+            MainPage = new DatabindingDemos.ColorPalate();
         }
 
         /// <summary>

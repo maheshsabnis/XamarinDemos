@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.DatabindingDemos.ColorPalate"
+             xmlns:local="clr-namespace:XamTrg.Models">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ColorCollection x:Key="colors"></local:ColorCollection>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Color Palate" FontSize="40" 
+                    TextColor="{Binding Source={x:Reference lstcolor },Path=SelectedItem}"/>
+            <ListView x:Name="lstcolor" BindingContext="{Binding Source={StaticResource colors}}" ItemsSource="{Binding}">
+               
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

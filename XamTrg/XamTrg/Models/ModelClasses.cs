@@ -236,4 +236,18 @@ namespace XamTrg.Models
         }
     }
 
+
+    public class ColorCollection: ObservableCollection<string>
+    {
+        public ColorCollection()
+        {
+            var properties = typeof(Color).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+
+            foreach (var item in properties)
+            {
+                Add(item.Name);
+            }
+
+        }
+    }
 }
