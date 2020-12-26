@@ -10,7 +10,7 @@ namespace XamTrg
         {
             InitializeComponent();
 
-            MainPage = new OtherUI.DatePickerPage();
+            MainPage = new DatabindingDemos.ColorPalate();
         }
 
         /// <summary>
