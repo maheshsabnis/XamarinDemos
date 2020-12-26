@@ -431,7 +431,7 @@ Syntax
 
 # Code for Converter
 
- public class EnableDisableBooleanConverter : IValueConverter
+    public class EnableDisableBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
