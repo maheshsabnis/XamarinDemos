@@ -50,6 +50,7 @@ namespace XamTrg.DatabindingDemos
         private void btnClear_Clicked(object sender, EventArgs e)
         {
             Complaints = new Complaints();
+
             BindingContext = this;
         }
     }

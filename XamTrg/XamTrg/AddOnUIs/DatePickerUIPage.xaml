@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.AddOnUIs.DatePickerUIPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Date Picker Demo " FontSize="40"  />
+
+            <DatePicker x:Name="dtPicker" MinimumDate="01/01/2000" MaximumDate="12/31/2020"
+                         Date="12/26/2020"
+                         DateSelected="DatePicker_DateSelected"/>
+
+            <Entry x:Name="entryReminder"
+                     Placeholder="Plese set the task reminder"></Entry>
+            <Label x:Name="lblReminderInfo"
+                    Text="You Set Reminder For:"></Label>
+
+            <TimePicker x:Name="timePicker" Time="11:30:00"
+                         PropertyChanged="timePicker_PropertyChanged"></TimePicker>
+
+            <Label Text="Please Enable the Times Selection for Reminder"></Label>
+            <Switch x:Name="switchTimer"
+                     Toggled="switchTimer_Toggled"></Switch>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

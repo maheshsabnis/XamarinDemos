@@ -447,6 +447,51 @@ Syntax
     }
 
 
+# Professional Application Development approach with Xamarin
+
+- Implementing RICH User Experience (UX) w.r.t. the device  Capabilities
+    - Device Friendly UI Elements, the UX that uses power of Device e.g. TimePicker, DatePicker
+    - Device Interactive Events
+        - Tap Events
+            - Device Specific interactive events for performing operations  
+            - GestureRecongnizers
+    - Camera Access or other sensorsn  devices    
+# Mobile / Device Specific UI Elements
+
+DatePicker
+TimePicker
+Switch
+
+
+# Multi-Page App
+
+
+
+# Accessing External Services On Devices
+To perform Http Calls the device must be enable for following services
+
+- The Navigation Services
+    - Used for Settings the Navigations across the Pages so that the End-user can perform data sharing across the 
+        pages
+    - The 'Navigation' class
+        - PushModelAsync(Page Class)
+            - The Page Class is the UI class for Interatcion
+
+
+Internet Access
+Network Change Services
+WiFi Sensors
+
+# Using Device Essentials
+Camera
+Sensors
+
+
+# Implementing the MVVM Pattern in Xamarin
+
+ The Approach for Model-View-ViewModel apps a professional approach for implementing the pure Code-less apps
+
+
 
 
 # Permission to access REST Calls

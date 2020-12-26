@@ -12,9 +12,12 @@
         <StackLayout>
             <Label Text="Color Palate" FontSize="40" 
                     TextColor="{Binding Source={x:Reference lstcolor },Path=SelectedItem}"/>
-            <ListView x:Name="lstcolor" BindingContext="{Binding Source={StaticResource colors}}" ItemsSource="{Binding}">
-               
+            <ListView x:Name="lstcolor" BindingContext="{Binding Source={StaticResource colors}}"
+                       
+                      ItemsSource="{Binding}">
+                
             </ListView>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

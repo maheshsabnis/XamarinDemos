@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.NavigationsDemo.NavigationDetailsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Navigation Details Page" FontSize="50"
+               />
+            <!--Use the BindingContext of the Parent-->
+            <ListView ItemsSource="{Binding}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=EmpNo}"></Label>
+                                <Label Text="{Binding Path=EmpName}"></Label>
+                                <Label Text="{Binding Path=Salary}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="btnGoBack" Clicked="btnGoBack_Clicked" Text="Back To Previous Page"> </Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
