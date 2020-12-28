@@ -478,13 +478,93 @@ To perform Http Calls the device must be enable for following services
             - The Page Class is the UI class for Interatcion
 
 
-Internet Access
-Network Change Services
-WiFi Sensors
+# vInternet Access
+# Network Change Services
+# WiFi Sensors
+
+If the Application requires the HTTP Calls to make then the following permissions must be set for the app to get 
+execute
+
+
+# The 'System.Net.Http.HttpClient' class
+Methods
+GetAsync() / PostAsync() / PutAsync() / DeleteAsync()
+
+All are Async method returning the Task object, the first parameter accepted by this is URL of the external REST API
+
+
+
+Task<HttpResponseMessage> GetAsync(string requestUri);    
+Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content);
+Task<HttpResponseMessage> PutAsync(string requestUri, HttpContent content);
+Task<HttpResponseMessage> DeleteAsync(string requestUri);
+
+HttpResponseMessage, the return type from all the above method. The response is contained inside HttpContent class.
+The response data from HttpContent can be read using following methods
+Task<byte[]> ReadAsByteArrayAsync(); Read response byte array e.g. Images, Video or any other binary file
+Task<Stream> ReadAsStreamAsync(); Read the Video Stream
+Task<string> ReadAsStringAsync(); Reading the String Response e.g. HTML, XML, JSON, TEXT
+
+To POST and PUT the data, use 'StringContent' class to pass the data in XML, TEXT, JSON, HTML form to REST APIs.
+
+Use Newtonsoft.Json.JsonCoinvert to serialize the CLR Object to String to perform POST and PUT Opetrations
+
+
+
+
+
+
+
+# Permission to access REST Calls
+ <uses-permission android:name="android.permission.INTERNET" />  --> Access to Internet by opeing the Communiation Socket
+ <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> --> Check if the WiFi State is enabled 
+ <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />  --> Check if the Network Access is Enabled
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> --> Ckech if the Write Prmissions are set 
+ <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> --> Check if the Runtime Network Changes nare granted
+ <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/> --> Check the wifi state changed is allowed for auto changing the network
+
+
+ Priority
+ ACCESS_NETWORK_STATE, CHANGE_NETWORK_STATE, INTERNET, ACCESS_WIFI_STATE, CHANGE_WIFI_STATE, WRITE_EXTERNAL_STORAGE
+
+
 
 # Using Device Essentials
 Camera
 Sensors
+
+Using the Permissions for the application
+
+
+    private async void btnState_Clicked(object sender, EventArgs e)
+        {
+            PermissionStatus status;
+            try
+            {
+                status = await Permissions.CheckStatusAsync<Permissions.NetworkState>();
+                if (status != PermissionStatus.Granted)
+                {
+                    status = await Permissions.RequestAsync<Permissions.NetworkState>();
+                }
+
+                await DisplayAlert("The Network Status ", status.ToString(), "Cancel");
+            }
+            catch (Exception ex)
+            {
+                // unhandled Application Exception
+                status = await Permissions.RequestAsync<Permissions.NetworkState>();
+                await DisplayAlert("Error Occured", ex.Message, "Cancel");
+            }
+
+            status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            }
+            await DisplayAlert("The Location In Use Permission Status ", status.ToString(), "Cancel");
+        }
+
+
 
 
 # Implementing the MVVM Pattern in Xamarin
@@ -493,12 +573,4 @@ Sensors
 
 
 
-
-# Permission to access REST Calls
- <uses-permission android:name="android.permission.INTERNET" /> 
- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
- <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
- <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 

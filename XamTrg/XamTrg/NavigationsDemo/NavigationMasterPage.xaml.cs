@@ -16,6 +16,9 @@ namespace XamTrg.NavigationsDemo
         public NavigationMasterPage()
         {
             InitializeComponent();
+            
+
+           
         }
 
         private async void btnNavigateToDetails_Clicked(object sender, EventArgs e)
