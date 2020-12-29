@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.Commanding.CommandingPage"
+             xmlns:local="clr-namespace:XamTrg.Commanding">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:DataProvider x:Key="ds"></local:DataProvider>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Source={StaticResource ds}}">
+            <Label Text="DEMO Simple Commanding" TextColor="Blue" BackgroundColor="Yellow" />
+
+            <ListView x:Name="lstmovies" ItemsSource="{Binding Path=Movies}">
+                
+            </ListView>
+
+            <!--The Command property will call the GetCommand property from DataProvider class
+            and this property will execute the method from DataProvider class to upcdate the UI-->
+            <Button x:Name="btnMovies" Text="Get Movies" Command="{Binding Path=GetCommand}"/>
+
+            <Button x:Name="btnMoviesGeneric" Text="Get Movies Generic" Command="{Binding Path=GenericCommand}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

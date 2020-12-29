@@ -10,7 +10,7 @@ namespace XamTrg
         {
             InitializeComponent();
 
-            MainPage = new NavigationsDemo.NavigationMasterPage();
+            MainPage = new Commanding.CommandingPage();
         }
 
         /// <summary>
