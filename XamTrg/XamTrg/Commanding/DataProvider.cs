@@ -28,7 +28,6 @@ namespace XamTrg.Commanding
             movies = new ObservableCollection<string>();
             GenericCommand = new GenericCommand(GetMoviesGeneric);
              
-
         }
 
         /// <summary>
