@@ -17,7 +17,7 @@ namespace XamTrg.Commanding
     {
         ActionCommand actionCommand;
 
-        GenericCommand GenericCommand { get; set; }
+        public GenericCommand GenericCommand { get; set; }
 
         ObservableCollection<string> movies;
 
@@ -26,10 +26,8 @@ namespace XamTrg.Commanding
         public DataProvider()
         {
             movies = new ObservableCollection<string>();
-            GenericCommand = new GenericCommand()
-            { 
-                 action =  GetMoviesGeneric
-            };
+            GenericCommand = new GenericCommand(GetMoviesGeneric);
+             
 
         }
 

@@ -7,9 +7,12 @@ namespace XamTrg.Commanding
 {
     public class GenericCommand : ICommand
     {
-       public Action action { get; set; }
-        
-        
+        Action action;
+
+        public GenericCommand(Action handler)
+        {
+            action = handler;
+        }
 
 
         public event EventHandler CanExecuteChanged;
@@ -17,11 +20,12 @@ namespace XamTrg.Commanding
         public bool CanExecute(object parameter)
         {
 
+            bool op = false;
             if (action != null)
             {
-                return true;
+                op = true;
             }
-            return true;
+            return op;
 
         }
 
