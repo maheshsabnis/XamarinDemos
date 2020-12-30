@@ -16,6 +16,8 @@ namespace XamTrg.Commanding
         public CommandingPage()
         {
             InitializeComponent();
+
+           
             // data = new DataProvider();
         }
 

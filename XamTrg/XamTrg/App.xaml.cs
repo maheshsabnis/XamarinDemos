@@ -10,7 +10,7 @@ namespace XamTrg
         {
             InitializeComponent();
 
-            MainPage = new Commanding.CommandingPage();
+            MainPage = new MVVM.Views.ListProductsView();
         }
 
         /// <summary>

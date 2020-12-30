@@ -11,7 +11,9 @@
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Source={StaticResource ds}}">
             <Label Text="DEMO Simple Commanding" TextColor="Blue" BackgroundColor="Yellow" />
-
+ 
+            
+            
             <ListView x:Name="lstmovies" ItemsSource="{Binding Path=Movies}">
                 
             </ListView>

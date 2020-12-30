@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamTrg.Models;
 
-namespace XamTrg.DatabindingDemos
+namespace XamTrg.MVVM.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListViewDataBinding : ContentPage
+    public partial class AddProduct : ContentPage
     {
-        public ListViewDataBinding()
+        public AddProduct()
         {
-            
-             
             InitializeComponent();
-           listViewProducts.BindingContext = new Products();
         }
     }
 }
